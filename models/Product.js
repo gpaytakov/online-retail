@@ -9,7 +9,6 @@ class Product extends Model {}
 // set up fields and rules for Product model
 Product.init(
 	{
-		// define columns
 		id: {
 			type: DataTypes.INTEGER,
 			allowNull: false, 
@@ -32,9 +31,7 @@ Product.init(
 			allowNull: false,
 			defaultValue: 10,
 			validate: {
-				isInt: {
-					msg: "Must be an integer number of pennies"
-				}
+				isNumeric: true
 			}
 		},
 		category_id: {
