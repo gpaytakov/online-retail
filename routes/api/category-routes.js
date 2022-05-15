@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
 		]
 	}).then((categoryData) => {
 		if (!categoryData) {
-			res.status(404).json('There is no such category with that id!');
+			res.status(404).json('There is no such category with that id!')
 			return;
 		};
 		res.json(categoryData);
@@ -59,12 +59,12 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
 	Category.update(
 		{
+			category_name: req.body.category_name
+		},
+		{
 			where: {
 				id: req.params.id
 			}
-		},
-		{
-			category_name: req.body.category_name
 		}
 	)
 	.then((updatedCategory) => {
