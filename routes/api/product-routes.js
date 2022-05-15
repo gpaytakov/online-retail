@@ -59,7 +59,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create new product
-	router.post('/', (req, res) => {
+router.post('/', (req, res) => {
 	/* req.body should look like this...
 		{
 		product_name: "Basketball",
@@ -88,7 +88,7 @@ router.get('/:id', (req, res) => {
 			console.log(error);
 			res.status(404).json(error);
 		});
-	});
+});
 
 // update product
 router.put('/:id', (req, res) => {

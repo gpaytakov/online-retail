@@ -43,11 +43,15 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // create a new tag
-  Tag.create(req, body)
-    .then((newTag) => {
-      res.json(newTag);
-    }).catch(error => {
+	// create a new tag
+	Tag.create(
+		{
+			tag_name: req.body.tag_name
+		}
+	)
+	.then((newTag) => {
+		res.json(newTag);
+	}).catch(error => {
 		res.status(500).json(error);
 	})
 });
@@ -73,16 +77,16 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
-  Tag.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-  .then((deletedTag) => {
-    res.json(deletedTag);
-  })
-  .catch((error) => res.json(error));
+	// delete on tag by its `id` value
+	Tag.destroy({
+		where: {
+			id: req.params.id,
+		},
+	})
+	.then((deletedTag) => {
+		res.json(deletedTag);
+	})
+	.catch((error) => res.json(error));
 });
 
 module.exports = router;
