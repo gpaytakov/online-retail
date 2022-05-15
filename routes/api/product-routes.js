@@ -108,10 +108,10 @@ router.put('/:id', (req, res) => {
 	})
 	.then(productTags => {
 		// get list of current tag_ids
-		const tagIds = productTags.map(({tag_id}) => tag_id);
+		const productTagIds = productTags.map(({tag_id}) => tag_id);
 		// create filtered list of new tag_ids
-		const newTagIds = req.body.tagIds
-			.filter(tag_id => !tagIds.includes(tag_id))
+		const newProductTags = req.body.tagIds
+			.filter(tag_id => !productTagIds.includes(tag_id))
 			.map(tag_id => {
 				return {
 					product_id: req.params.id,
@@ -130,7 +130,7 @@ router.put('/:id', (req, res) => {
 					id: productTagsRemove
 				} 
 			}),
-			ProductTag.bulkCreate(newTagIds),
+			ProductTag.bulkCreate(newProductTags),
 		]);
 	})
 	.then((updatedTags) => res.json(updatedTags))
